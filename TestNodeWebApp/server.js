@@ -1,7 +1,8 @@
 'use strict';
-
+const fs = require('fs');
 const express = require('express');
 const path = require("path");
+const bodyParser = require('body-parser');
 
 // Constants
 const PORT = 8080;
@@ -16,6 +17,9 @@ app.use(bodyParser.json());
 app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname + '/Home.html'));
 });
+app.listen(PORT);
+console.log('Running on ' + PORT);
+
 app.post('/', function (req, res) {
 
     var calculation = req.body.data;
@@ -33,8 +37,7 @@ app.post('/', function (req, res) {
 });
 
 
-app.listen(PORT);
-console.log('Running on ' + PORT);
+
 
 // Admin App
 const adminApp = express();
