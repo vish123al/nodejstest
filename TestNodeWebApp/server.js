@@ -1,46 +1,35 @@
 'use strict';
 
-var http = require('http');
-var port = process.env.port || 8080;
-var fs = require('fs');
+const express = require('express');
 
-var express = require('express');
-var path = require("path");
-var bodyParser = require('body-parser');
+// Constants
+const PORT = 8080;
+const ADMIN_PORT = 8081;
+const SUPER_USER_PORT = 8082;
 
-var express = require('express');
-var path = require("path");
-var bodyParser = require('body-parser');
-
-//CREATE APP
-var app = express();
-app.use(express.static('css'));
-app.use(express.static('scripts'));
-app.use(bodyParser.json());
-
-//LOCATION OF STATIC CONTENT IN YOUR FILESYSTEM
+// App
+const app = express();
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/home.html'));
-    //__dirname : It will resolve to your project folder.
+  res.send('Hello world! I am the regular app\n');
 });
 
-app.post('/', function (req, res) {
+app.listen(PORT);
+console.log('Running on ' + PORT);
 
-    var calculation = req.body.data;
-    var response = new Object();
-    try {
-        response.result =  eval(calculation);
-        response.success = true;
-    }
-    catch (err) {
-        response.result = err.message;
-        response.success = false;
-    }
-    res.send(JSON.stringify(response));
-
+// Admin App
+const adminApp = express();
+adminApp.get('/', function (req, res) {
+  res.send('Hello world! I am the admin app\n');
 });
 
-console.log('Calculator web application running');
+adminApp.listen(ADMIN_PORT);
+console.log('Running on ' + ADMIN_PORT);
 
-//PORT TO LISTEN TO
-app.listen(8080);
+// Super User App
+const superUserApp = express();
+superUserApp.get('/', function (req, res) {
+  res.send('Hello world! I am the super user app\n');
+});
+
+superUserApp.listen(SUPER_USER_PORT);
+console.log('Running on ' + SUPER_USER_PORT);
