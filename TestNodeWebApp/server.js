@@ -11,7 +11,7 @@ const SUPER_USER_PORT = 8082;
 // App
 const app = express();
 app.get('/', function (req, res) {
-   res.sendFile(path.join(__dirname + '/home.html'));
+   res.sendFile(path.join(__dirname + '/Home.html'));
 });
 
 app.listen(PORT);
