@@ -1,15 +1,13 @@
 {
-  "name": "test-node-web-app",
-  "version": "0.0.0",
-  "description": "TestNodeWebApp",
-   "main": "server.js",
-  "author": {
-    "name": "augus"
-  },
- scripts": {
+  "name": "docker_web_app",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "First Last <first.last@example.com>",
+  "main": "app.js",
+  "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.13.3"
   }
 }
