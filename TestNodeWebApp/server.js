@@ -1,11 +1,12 @@
 'use strict';
 
-const express = require('express');
+var http = require('http');
+var port = process.env.port || 8080;
+var fs = require('fs');
 
-// Constants
-const PORT = 8080;
-const ADMIN_PORT = 8081;
-const SUPER_USER_PORT = 8082;
+var express = require('express');
+var path = require("path");
+var bodyParser = require('body-parser');
 
 var express = require('express');
 var path = require("path");
