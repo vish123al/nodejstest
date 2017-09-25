@@ -1,16 +1,26 @@
 'use strict';
 
-const express = require('express');
 
 // Constants
 const PORT = 8080;
 const ADMIN_PORT = 8081;
 const SUPER_USER_PORT = 8082;
 
-// App
+var express = require('express');
+var path = require("path");
+var bodyParser = require('body-parser');
+
+//CREATE APP
 const app = express();
+app.use(express.static('css'));
+app.use(express.static('scripts'));
+app.use(bodyParser.json());
+
+
+//LOCATION OF STATIC CONTENT IN YOUR FILESYSTEM
 app.get('/', function (req, res) {
-  res.send('Hello world! I am the regular app\n');
+    res.sendFile(path.join(__dirname + '/home.html'));
+    //__dirname : It will resolve to your project folder.
 });
 
 app.listen(PORT);
